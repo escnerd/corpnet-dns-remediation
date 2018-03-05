@@ -55,8 +55,8 @@ def wrong_hsrp(hostname, ip):
         return corrected_format.lower()
     else:
         # exmaples of hsrp entries that aren't fixable because the entry itself does not contain enough information:
-        # hsrp-v11.corpnet.ebay.com -- There's no site code; hsrp-v11 of what?
-        # hsrp.sjc-7206.corpnet.ebay.com -- Looks like this one is in its own .sjc-7206 subdomain, no site code either
+        # hsrp-v11.corpnet.foobar.com -- There's no site code; hsrp-v11 of what?
+        # hsrp.sjc-7206.corpnet.foobar.com -- Looks like this one is in its own .sjc-7206 subdomain, no site code either
         print time.strftime("%b%d-%H:%M:%S") + ": Unfixable hsrp entry detected (probably should just be deleted):\t" + hostname.group() + ' ' + ip.group()
         return '\tNot fixable & should probably just be deleted:' + hostname.group()
 

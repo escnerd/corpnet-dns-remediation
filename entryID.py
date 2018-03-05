@@ -9,10 +9,10 @@ pat_comment = re.compile("(?=^(;)+)")
 pat_NS_record = re.compile("(?=\\b(\d)+(\s)+IN(\s)+NS\\b)")
 pat_SOA_record = re.compile("(?=\\b(\d)+(\s)+IN(\s)+SOA\\b)")
 pat_weird_ip = re.compile("(?=^(([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.){4})")
-pat_its_zone = re.compile("(?=\.its\.ebay\.com\.(\s)+(\d)+)")
-pat_sjc_zone = re.compile("(?=\.sjc\.ebay\.com\.(\s)+(\d)+)")
-pat_corpnet = re.compile("(?=\.corpnet\.ebay\.com\.(\s)+(\d)+)")
-pat_corp = re.compile("(?=\.corp\.ebay\.com\.(\s)+(\d)+)")
+pat_its_zone = re.compile("(?=\.its\.foobar\.com\.(\s)+(\d)+)")
+pat_sjc_zone = re.compile("(?=\.sjc\.foobar\.com\.(\s)+(\d)+)")
+pat_corpnet = re.compile("(?=\.corpnet\.foobar\.com\.(\s)+(\d)+)")
+pat_corp = re.compile("(?=\.corp\.foobar\.com\.(\s)+(\d)+)")
 pat_whitespace = re.compile("^\s+$")
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # The following tests to see what type of DNS record the input line is
@@ -71,24 +71,24 @@ def is_weird_ip(line):
 
 
 def is_its_zone(line):
-    """Is this line an .its.ebay.com. entry"""
+    """Is this line an .its.foobar.com. entry"""
     if re.search(pat_its_zone, line):
         return True
 
 
 def is_sjc_zone(line):
-    """Is this line an .sjc.ebay.com. entry?"""
+    """Is this line an .sjc.foobar.com. entry?"""
     if re.search(pat_sjc_zone, line):
         return True
 
 
 def is_corpnet(line):
-    """Is this line a .corpnet.ebay.com. entry?"""
+    """Is this line a .corpnet.foobar.com. entry?"""
     if re.search(pat_corpnet, line):
         return True
 
 
 def is_corp(line):
-    """Is this line a .corp.ebay.com. entry? """
+    """Is this line a .corp.foobar.com. entry? """
     if re.search(pat_corp, line):
         return True

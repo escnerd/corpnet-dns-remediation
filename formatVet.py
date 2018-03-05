@@ -13,21 +13,21 @@ l_ignored = []
 # Regex Patterns
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 pat_ip = re.compile("(([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\.){0,1}){4}$")
-pat_serial = re.compile("^[Ss]e?\d{1}-\d{1}-(\d-)?.*\.corpnet\.ebay\.com\.")
+pat_serial = re.compile("^[Ss]e?\d{1}-\d{1}-(\d-)?.*\.corpnet\.foobar\.com\.")
 pat_capture_1st_group = re.compile(".*(?=\s+\d+\s+)")
-pat_cname_capture_2nd_group = re.compile("(?<=CNAME\s).*\.ebay\.com\.$")
-pat_wrong_vlan = re.compile("^[Vv](lan|-)\d*\..*\.corpnet\.ebay\.com\.")
-pat_wrong_hsrp = re.compile("^[Hh][Ss][Rr][Pp].*\.corpnet\.ebay\.com\.")
-pat_wrong_fe = re.compile("^[Ff](a|as)?(\d|-).*\.corpnet\.ebay\.com\.")
-pat_wrong_ge = re.compile("^[Gg](i|e-\d|ig)?(\d|-).*\.corpnet\.ebay\.com\.")
-pat_wrong_te = re.compile("^[Tt](i|e-\d|en)?(\d|-).*\.corpnet\.ebay\.com\.")
+pat_cname_capture_2nd_group = re.compile("(?<=CNAME\s).*\.foobar\.com\.$")
+pat_wrong_vlan = re.compile("^[Vv](lan|-)\d*\..*\.corpnet\.foobar\.com\.")
+pat_wrong_hsrp = re.compile("^[Hh][Ss][Rr][Pp].*\.corpnet\.foobar\.com\.")
+pat_wrong_fe = re.compile("^[Ff](a|as)?(\d|-).*\.corpnet\.foobar\.com\.")
+pat_wrong_ge = re.compile("^[Gg](i|e-\d|ig)?(\d|-).*\.corpnet\.foobar\.com\.")
+pat_wrong_te = re.compile("^[Tt](i|e-\d|en)?(\d|-).*\.corpnet\.foobar\.com\.")
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Main function(s)
-# Currently only .corpnet.ebay.com. A records are vetted. But other(s) may be
+# Currently only .corpnet.foobar.com. A records are vetted. But other(s) may be
 # implemented in the future, such as other main functions that would handle:
-# - its.ebay.com.
-# - sjc.ebay.com.
-# - corp.ebay.com.
+# - its.foobar.com.
+# - sjc.foobar.com.
+# - corp.foobar.com.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
@@ -77,9 +77,9 @@ def igln(line):
 def int_dev(line):
     """ 100/gig/ten interface, hostname
     examples:
-        te3-5.2018-ash0-wr01.corpnet.ebay.com
-        ge-0-0-bdl1-vr01.corpnet.ebay.com
-        fe0-0-dub1-wr02.corpnet.ebay.com
+        te3-5.2018-ash0-wr01.corpnet.foobar.com
+        ge-0-0-bdl1-vr01.corpnet.foobar.com
+        fe0-0-dub1-wr02.corpnet.foobar.com
     """
     global breaker
     global l_remove
@@ -113,8 +113,8 @@ def int_dev(line):
 def int_serial(line):
     """ Detects outdated serial interface entries; dns entries should be removed.
     examples:
-    s1-0-aus3-wr01.corpnet.ebay.com
-    se1-0-phx1-wr02.corpnet.ebay.com
+    s1-0-aus3-wr01.corpnet.foobar.com
+    se1-0-phx1-wr02.corpnet.foobar.com
     """
     global breaker
     global l_remove
