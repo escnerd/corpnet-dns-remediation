@@ -4,8 +4,9 @@ import time
 import entryID
 import formatVet
 
+
 def main(argv):
-    fh_dns = open(sys.argv[1],"r")
+    fh_dns = open(sys.argv[1], "r")
 
     for line in fh_dns:
         if entryID.is_A_record(line):
@@ -39,7 +40,8 @@ def main(argv):
             print time.strftime("%b%d-%H:%M:%S") + ": Unrecognized type of entry detected:\t" + line.rstrip()
 
     fh_dns.close()
-    formatVet.flush_out()   #Write out results to files
+    formatVet.flush_out()
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
