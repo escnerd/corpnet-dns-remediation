@@ -8,8 +8,6 @@ pat_fix_wrong_ge_hostname = re.compile("^[Gg](ig?|e)?-?(?=-?\d{1,2})")
 pat_fix_wrong_te_hostname = re.compile("^[Tt](en?)?-?(?=-?\d{1,2})")
 pat_fix_wrong_vlan_int = re.compile("^([Vv](lan|-)|V)")
 pat_fixable_wrong_hsrp = re.compile("^([Hh][Ss][Rr][Pp]).*?(\d+)(?=-)")
-# pat_fix_wrong_site_fl_dev = re.compile("^[A-Za-z]{3}(?=\d{1,2}-\d{1,2}-)")
-# pat_fix_wrong_site_dev = re.compile("^[A-Za-z]{3}(?=\d{1,2}-)")
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Called by formatVet.py functions
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
