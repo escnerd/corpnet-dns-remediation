@@ -44,7 +44,6 @@ def is_comment(line):
 
 
 def is_NS_record(line):
-    # type: (object) -> object
     """Is this line an NS record?"""
     if re.search(pat_NS_record, line):
         return True
