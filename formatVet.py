@@ -21,8 +21,6 @@ pat_wrong_hsrp = re.compile("^[Hh][Ss][Rr][Pp].*\.corpnet\.ebay\.com\.")
 pat_wrong_fe = re.compile("^[Ff](a|as)?(\d|-).*\.corpnet\.ebay\.com\.")
 pat_wrong_ge = re.compile("^[Gg](i|e-\d|ig)?(\d|-).*\.corpnet\.ebay\.com\.")
 pat_wrong_te = re.compile("^[Tt](i|e-\d|en)?(\d|-).*\.corpnet\.ebay\.com\.")
-# pat_wrong_site_fl_dev = re.compile("^([A-Z]{3}|[A-Z][a-z]{2})\d-\d{1,2}-\w{2}\d{2}\.corpnet\.ebay\.com\.")
-# pat_wrong_site_dev = re.compile("^([A-Z]{3}|[A-Z][a-z]{2})\d-[a-z]{2}.*\.corpnet\.ebay\.com\.")
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Main function(s)
 # Currently only .corpnet.ebay.com. A records are vetted. But other(s) may be
@@ -56,8 +54,8 @@ def cname(line):
 
     hostname = re.search(pat_capture_1st_group, line)
     c = re.search(pat_cname_capture_2nd_group, line)
-    if not c:											#*handles single case where CNAME points to an IP string
-        c = re.search(pat_ip,line)						#*assign this to 'c' and resume normally
+    if not c:											# handles single case where CNAME points to an IP string
+        c = re.search(pat_ip,line)						# assign this to 'c' and resume normally
     l_cname.append(hostname.group() + ' ' + c.group() + '\n')
     print time.strftime("%b%d-%H:%M:%S") + ": CNAME detected:\t" + line.rstrip()
     return
@@ -70,6 +68,7 @@ def igln(line):
     l_ignored.append(line)
     print time.strftime("%b%d-%H:%M:%S") + ": Line Ignored:\t" + line.rstrip()
     return
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Called by corpnet() to handle different types of entries
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -155,44 +154,11 @@ def hsrp(line):
         l_add.append(autofix.wrong_hsrp(hostname, ip) + '\n')
         breaker = True
 
-
-#def site_fl_dev(line):
-#	""" 3 char site code, building #, floor #, device name, dev #
-#	example: sjc15-3-ca01, aus3-3-wl01
-#
-#	*Currently not in use anymore as of b0.6.0 revision.
-#	"""
-#	global breaker
-#	global l_remove
-#	global l_add
-#
-#	hostname = re.search(pat_wrong_site_fl_dev, line)
-#	if hostname:
-#		ip = re.search(pat_ip, line)
-#		breaker = True
-#		l_remove.append(hostname.group() + ' ' + ip.group() + '\n')
-#		l_add.append(autofix.wrong_site_fl_dev(hostname, ip) + '\n')
-#		return
-#def site_dev(line):
-#	""" 3 char site code, building #, device name, dev #
-#	example: chi1-ts01, nyb1-wr01
-#
-#	*Currently not in use anymore as of b0.6.0 revision.
-#	"""
-#	global breaker
-#	global l_remove
-#	global l_add
-#
-#	hostname = re.search(pat_wrong_site_dev, line)
-#	if hostname:
-#		ip = re.search(pat_ip, line)
-#		breaker = True
-#		l_remove.append(hostname.group() + ' ' + ip.group() + '\n')
-#		l_add.append(autofix.wrong_site_dev(hostname, ip) + '\n')
-#		return
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Output
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 def flush_out():
     global l_add
     global l_remove

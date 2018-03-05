@@ -62,26 +62,11 @@ def wrong_hsrp(hostname, ip):
         print time.strftime("%b%d-%H:%M:%S") + ": Unfixable hsrp entry detected (probably should just be deleted):\t" + hostname.group() + ' ' + ip.group()
         return '\tNot fixable & should probably just be deleted:' + hostname.group()
 
-
-#def wrong_site_fl_dev(hostname, ip):
-#	""" Currently, entries that land here only need to be lower-cased to correct.
-#	Refex pattern is already created, though commented out on top """
-#	corrected_format = hostname.group() + ' ' + ip.group()
-#	print time.strftime("%b%d-%H:%M:%S") + ": Bad site-fl-dev entry detected:\t" + hostname.group() + ' ' + ip.group()
-#	print time.strftime("%b%d-%H:%M:%S") + ': Should be:' + '\t'*3 + corrected_format.lower()
-#	return corrected_format.lower()
-#
-#
-#def wrong_site_dev(hostname, ip):
-#	""" Currently, entries that land here only need to be lower-cased to correct.
-#	Refex pattern is already created, though commented out on top """
-#	corrected_format = hostname.group() + ' ' + ip.group()
-#	print time.strftime("%b%d-%H:%M:%S") + ": Bad site-dev entry detected:\t" + hostname.group() + ' ' + ip.group()
-#	print time.strftime("%b%d-%H:%M:%S") + ': Should be:' + '\t'*3 + corrected_format.lower()
-#	return corrected_format.lower()
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Replacement functions for re.sub
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
 def repl_hsrp(matchobj):
     """ matchobj(2) should be the vlan number """
     return 'v' + matchobj.group(2) + '-hsrp'
